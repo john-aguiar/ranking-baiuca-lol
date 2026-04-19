@@ -4,6 +4,11 @@ import { Pool } from 'pg';
 // Limpa a string de conexão para evitar ENOTFOUND por espaços invisíveis
 const connectionString = process.env.DATABASE_URL?.trim();
 
+if (connectionString && process.env.NODE_ENV === 'production') {
+  const host = connectionString.split('@')[1]?.split(':')[0];
+  console.log("DB_DIAGNOSTIC: Tentando conectar ao host:", host);
+}
+
 export const db = new Pool({
   connectionString,
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
