@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@layer base {
+  input::placeholder, 
+  select::placeholder, 
+  textarea::placeholder {
+    color: #94a3b8; /* slate-400 */
+    opacity: 1;
+  }
+  
+  /* Garante que o texto digitado seja visível se o fundo for escuro */
+  input, select {
+    color: #f8fafc; /* slate-50 */
+  }
+}

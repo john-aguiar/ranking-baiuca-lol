@@ -1,135 +1,58 @@
-# LoL Ranking React App
+# LoL Ranking (Next.js Edition) 🏆
 
-Um sistema completo de ranking para League of Legends construído com React no frontend e Express.js + SQLite no backend.
+Um sistema completo de ranking para League of Legends, agora migrado para **Next.js 15 (App Router)** e pronto para deploy na **Vercel** com banco de dados **Turso**.
 
-## 🚀 Funcionalidades
+## 🚀 Tecnologias
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router + API Routes)
+- **Estilização**: [Tailwind CSS 4.0](https://tailwindcss.com/)
+- **Banco de Dados**: [Turso](https://turso.tech/) (LibSQL/SQLite na nuvem)
+- **Ícones**: [Lucide React](https://lucide.dev/)
+- **Deploy**: [Vercel](https://vercel.com/)
 
-- **Gerenciamento de Jogadores**: Adicione, visualize e remova jogadores
-- **Criação de Partidas**: Monte times e registre partidas concluídas
-- **Sistema de Shuffling**: Distribua jogadores automaticamente em times balanceados
-- **Ranking Dinâmico**: Sistema de ranking que calcula automaticamente baseado nas vitórias/derrotas
-- **Histórico de Partidas**: Visualize todas as partidas com opção de editar resultados
-- **Interface Responsiva**: Design moderno com Tailwind CSS
+## ⚙️ Configuração Local
 
-## 🛠️ Tecnologias Utilizadas
+1. **Instale as dependências**:
+   ```bash
+   npm install
+   ```
 
-### Frontend
-- **React 18** - Framework JavaScript
-- **Vite** - Build tool e dev server
-- **Tailwind CSS** - Framework CSS utilitário
-- **React Router** - Roteamento SPA
+2. **Banco de Dados Local**:
+   O projeto usará um arquivo `local.db` automaticamente se nenhuma variável de ambiente for definida.
 
-### Backend
-- **Node.js + Express.js** - Servidor web
-- **SQLite + better-sqlite3** - Banco de dados
-- **CORS** - Controle de acesso cross-origin
+3. **Inicie o servidor de desenvolvimento**:
+   ```bash
+   npm run dev
+   ```
+   Acesse `http://localhost:3000`.
+
+## 🌍 Deploy na Vercel + Turso
+
+Para que os dados persistam após o deploy na Vercel, você deve usar o Turso:
+
+### 1. Configurar Turso
+1. Crie uma conta no [Turso](https://turso.tech/).
+2. Crie um novo banco de dados (ex: `lol-ranking`).
+3. Obtenha a **URL** (`libsql://...`) e o **Auth Token**.
+
+### 2. Configurar Vercel
+1. Conecte seu repositório à Vercel.
+2. Nas configurações do projeto, adicione as **Environment Variables**:
+   - `TURSO_URL`: A URL do seu banco no Turso.
+   - `TURSO_AUTH_TOKEN`: O token de autenticação gerado.
+3. Clique em **Deploy**.
 
 ## 📁 Estrutura do Projeto
-
-```
-lol-ranking-react/
-├── backend/                 # API Express.js
-│   ├── src/
-│   │   ├── database.js     # Configuração SQLite
-│   │   ├── routes.js       # Endpoints da API
-│   │   └── server.js       # Servidor principal
-│   └── package.json
-├── frontend/                # Aplicação React
-│   ├── src/
-│   │   ├── components/     # Componentes reutilizáveis
-│   │   ├── pages/          # Páginas da aplicação
-│   │   ├── services/       # Serviços (API calls)
-│   │   ├── App.jsx         # Componente principal
-│   │   └── main.jsx        # Ponto de entrada
-│   ├── index.html
-│   ├── vite.config.js
-│   └── package.json
-└── README.md
-```
-
-## 🚀 Como Executar
-
-### Pré-requisitos
-- Node.js (versão 16 ou superior)
-- npm ou yarn
-
-### Backend
-```bash
-cd backend
-npm install
-npm start
-# Servidor roda em http://localhost:3000
-```
-
-### Frontend
-```bash
-cd frontend
-npm install
-npm run dev
-# Aplicação roda em http://localhost:5173
-```
-
-## 📡 API Endpoints
-
-### Jogadores
-- `GET /players` - Listar todos os jogadores
-- `POST /players` - Criar novo jogador
-- `DELETE /players/:id` - Remover jogador
-
-### Partidas
-- `GET /matches` - Listar todas as partidas
-- `POST /matches` - Criar nova partida
-- `PUT /matches/:id` - Atualizar resultado da partida
-- `DELETE /matches/:id` - Remover partida
-
-### Ranking
-- `GET /ranking` - Obter ranking atual
-
-## 🎯 Como Usar
-
-1. **Adicione Jogadores**: Na página "Jogadores", adicione os participantes
-2. **Crie Partidas**: Na página "Partidas", selecione jogadores e faça o shuffling
-3. **Registre Resultados**: Após a partida, marque o time vencedor
-4. **Acompanhe o Ranking**: Visualize o ranking atualizado automaticamente
-5. **Histórico**: Veja todas as partidas na página "Histórico"
-
-## 🔧 Desenvolvimento
-
-### Scripts Disponíveis
-
-#### Backend
-- `npm start` - Inicia o servidor em modo produção
-- `npm run dev` - Inicia o servidor em modo desenvolvimento (com nodemon)
-
-#### Frontend
-- `npm run dev` - Inicia o servidor de desenvolvimento
-- `npm run build` - Build para produção
-- `npm run preview` - Preview do build de produção
+- `src/app`: Rotas da aplicação (Páginas e API).
+- `src/components`: Componentes React reutilizáveis.
+- `src/lib`: Lógica de conexão com o banco de dados.
+- `src/services`: Camada de comunicação com a API local.
+- `_deprecated/`: Código original (React+Vite+Express) mantido para referência.
 
 ## 📊 Banco de Dados
-
-O projeto utiliza SQLite com as seguintes tabelas:
-
-- **players**: Armazena informações dos jogadores
-- **matches**: Registra as partidas com data, modo e vencedor
-- **match_players**: Relaciona jogadores com partidas (time A/B e se ganhou)
-
-## 🤝 Contribuição
-
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
-## 📝 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
-
-## 👨‍💻 Autor
-
-**Seu Nome** - [Seu GitHub](https://github.com/seuusuario)
+O sistema utiliza 3 tabelas principais:
+- `players`: Gerenciamento de jogadores.
+- `matches`: Registro de partidas (data, modo, vencedor).
+- `match_players`: Relacionamento entre jogadores e partidas (Time A vs Time B).
 
 ---
-
-⭐ Se este projeto te ajudou, dê uma estrela!
+⭐ Desenvolvido para facilitar o ranking das suas partidas de LoL!

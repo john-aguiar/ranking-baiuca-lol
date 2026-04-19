@@ -1,0 +1,36 @@
+{
+  "name": "lol-ranking-react",
+  "version": "1.0.0",
+  "description": "Um sistema completo de ranking para League of Legends construído com React no frontend e Express.js + SQLite no backend.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/john-aguiar/lol-ranking-react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/john-aguiar/lol-ranking-react/issues"
+  },
+  "homepage": "https://github.com/john-aguiar/lol-ranking-react#readme",
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.2.2",
+    "lucide-react": "^1.8.0",
+    "next": "^16.2.4",
+    "pg": "^8.20.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.10",
+    "tailwindcss": "^4.2.2"
+  }
+}
